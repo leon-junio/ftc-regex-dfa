@@ -50,7 +50,7 @@ public final class Thompson {
             throws Exception {
         while (nextWord != null) {
             var actualPosition = -1;
-            var operationFinded = ' ';
+            var operationFinded = Character.MIN_VALUE;
             var result = runThompsonIteration(targetNfaStructure, index, statesTransition,
                     new ThompsonIteration(actualPosition, operationFinded, nextWord));
             nextWord = result.nextWord();

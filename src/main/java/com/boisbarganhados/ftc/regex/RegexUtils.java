@@ -91,6 +91,12 @@ public final class RegexUtils {
                 .findFirst().orElse(null);
     }
 
+    /**
+     * Parse the DFA to a JFlap DFA.
+     * 
+     * @param regexDfa The DFA to be parsed.
+     * @return The JFlap DFA equivalent to the given DFA.
+     */
     public static DFA parseToJFlapDFA(RegexDFElement regexDfa) {
         var dfa = new DFA();
         var states = new HashSet<Integer>();
