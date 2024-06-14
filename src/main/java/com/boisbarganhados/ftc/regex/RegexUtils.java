@@ -132,7 +132,7 @@ public final class RegexUtils {
      * @return The DFA equivalent to the NFA.
      */
     public static RegexDFElement convertToDeterministic(RegexDFElement targetNfaStructure) {
-        RegexDFElement targetDfaStructure = RegexDFElement.builder().alphabetSet(targetNfaStructure.getAlphabetSet())
+        var targetDfaStructure = RegexDFElement.builder().alphabetSet(targetNfaStructure.getAlphabetSet())
                 .finalStates(new HashSet<>())
                 .transitions(new ArrayList<>()).deterministic(true).build();
         var dfaBody = new DFABody(new HashMap<>(), new ArrayList<>(), new ArrayList<>());

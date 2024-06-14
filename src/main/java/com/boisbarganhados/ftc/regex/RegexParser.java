@@ -46,11 +46,8 @@ public final class RegexParser {
         int acc = 1;
         while (acc != 0) {
             wordIndex++;
-            if (nextWord.charAt(wordIndex) == '(') {
-                acc++;
-            } else if (nextWord.charAt(wordIndex) == ')') {
-                acc--;
-            }
+            acc += parenthesisValidator(nextWord.charAt(wordIndex)) == 1 ? +1
+                    : parenthesisValidator(nextWord.charAt(wordIndex)) == 2 ? -1 : 0;
         }
         wordIndex++;
         return wordIndex;
@@ -121,6 +118,23 @@ public final class RegexParser {
             }
             targetDfaStructure.getTransitions().get(targetState).get(symbol).add(stateIndex);
         });
+    }
+
+    /**
+     * Validate the parenthesis in the regex string.
+     * 
+     * @param charW The character to be validated.
+     * @return int number 1- open parenthesis, 2- close parenthesis, 3- other
+     *         character.
+     */
+    private static int parenthesisValidator(char charW) {
+        if (charW == '(') {
+            return 1;
+        } else if (charW == ')') {
+            return 2;
+        } else {
+            return 3;
+        }
     }
 
 }
