@@ -179,11 +179,12 @@ public class Main {
             var regex = RegexUtils.readRegex(pathToRegex);
             var sentences = RegexUtils.readSentences(pathToSentences);
             var regexDfa = Thompson.getNfaFromRegex(regex);
+            regexDfa = RegexUtils.convertToDeterministic(regexDfa);
             var regexPath = pathToRegex.substring(0, pathToRegex.lastIndexOf('.')) +
                     "_regex_dfa.jff";
+            RegexUtils.simulateDFA(regexDfa, sentences);
             XMLController.writer(JFlapParser.parse(RegexUtils.parseToJFlapDFA(regexDfa)),
                     regexPath);
-            RegexUtils.simulateDFA(regexDfa, sentences);
             runJFLAP(regexPath);
             System.out.println("Regex transformation finished.");
         } catch (Exception e) {

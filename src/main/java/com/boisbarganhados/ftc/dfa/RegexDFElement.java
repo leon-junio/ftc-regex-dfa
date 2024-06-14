@@ -27,14 +27,6 @@ public class RegexDFElement {
     @EqualsAndHashCode.Exclude
     private List<HashMap<String, List<Integer>>> transitions;
 
-    public List<Integer> getIndividualStates(){
-        List<Integer> individualStates = new ArrayList<Integer>();
-        for (int i = 0; i < getTransitionsTotal(); i++) {
-            individualStates.add(i);
-        }
-        return individualStates;
-    }
-
     /**
      * Start the NFA structure with the initial and final states.
      * 
