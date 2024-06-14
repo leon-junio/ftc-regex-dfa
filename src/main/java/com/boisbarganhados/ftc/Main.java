@@ -18,12 +18,13 @@ import com.boisbarganhados.ftc.regex.Thompson;
  * 
  * @author Leon Junio Martins Ferreira [https://github.com/leon-junio]
  * @author Edmar Melandes Junior [https://github.com/Lexizz7]
+ * @author Felipe Aguilar Moura [https://github.com/felagmoura]
  */
 public class Main {
 
     private final static Scanner scanner = new Scanner(System.in);
     private final static String JFLAP_PATH = "bin/JFLAP/JFLAP.jar";
-    private final static String TEST_REGEX_DFA = "test/regex.jff";
+    private final static String TEST_REGEX_DFA = "./tests/test_base_regex.jff";
     private final static String REGEX_TEST = "(a+b)*";
 
     public static void main(String[] args) {
@@ -67,21 +68,41 @@ public class Main {
      * @throws Exception
      */
     public static void menu() throws Exception {
-        System.out.println("Enter the path (or file name if file is located at program root folder) \n " +
-                "to the regex file and after the path to the sentences file separated by space");
-        System.out
-                .println("Enter 'test' to test a default regex to DFA conversion \nenter 'exit' to close the program");
-        String response = scanner.nextLine();
-        if (response == null || response.isEmpty()) {
-            cliUsage();
-        } else if (response.equals("gen")) {
-            generate();
-        } else if (response.equals("test")) {
-            test();
-        } else if (response.equals("exit")) {
-            System.exit(0);
-        } else {
-            startMinimization(response);
+        // Menu de opções
+        System.out.println("1- Run regex transformation");
+        System.out.println("2- Minimize DFA");
+        System.out.println("3- Generate test DFA");
+        System.out.println("4- Test");
+        System.out.println("5- Exit");
+        System.out.println("Choose an option:");
+        int option = scanner.nextInt();
+        scanner.nextLine();
+        switch (option) {
+            case 1:
+                System.out.println("Enter the path to the regex file:");
+                var pathToRegex = scanner.nextLine();
+                System.out.println("Enter the path to the sentences file:");
+                var pathToSentences = scanner.nextLine();
+                runRegexTransformation(pathToRegex, pathToSentences);
+                break;
+            case 2:
+                System.out.println("Enter the path to the XML file:");
+                var xmlFilePath = scanner.nextLine();
+                startMinimization(xmlFilePath);
+                break;
+            case 3:
+                generate();
+                break;
+            case 4:
+                test();
+                break;
+            case 5:
+                System.out.println("Exiting...");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Invalid option");
+                break;
         }
     }
 
@@ -96,7 +117,6 @@ public class Main {
             var sentences = Arrays.asList("abbbbbb", "a", "b", "");
             runRegexTransformation(REGEX_TEST, sentences);
             System.out.println("Test finished");
-            System.exit(0);
         } catch (Exception e) {
             System.err.println("Error while testing:");
             e.printStackTrace();
@@ -173,6 +193,12 @@ public class Main {
         }
     }
 
+    /**
+     * Run the regex transformation with the given paths
+     * 
+     * @param pathToRegex     Path to the regex file
+     * @param pathToSentences Path to the sentences file
+     */
     private static void runRegexTransformation(String pathToRegex, String pathToSentences) {
         try {
             System.out.println("Running regex transformation...");
@@ -193,8 +219,15 @@ public class Main {
         }
     }
 
+    /**
+     * Run the regex transformation with the given regex and sentences
+     * 
+     * @param regex     Regex to be transformed
+     * @param sentences Sentences to be tested
+     */
     private static void runRegexTransformation(String regex, List<String> sentences) {
         try {
+            System.out.println("Running regex transformation...");
             var regexDfa = Thompson.getNfaFromRegex(regex);
             var dfa = RegexUtils.convertToDeterministic(regexDfa);
             System.out.println(dfa);
@@ -205,6 +238,7 @@ public class Main {
             XMLController.writer(JFlapParser.parse(RegexUtils.parseToJFlapDFA(dfa)),
                     regexPath);
             runJFLAP(regexPath);
+            System.out.println("Regex transformation finished.");
         } catch (Exception e) {
             System.err.println("Error while converting regex to DFA:");
             e.printStackTrace();

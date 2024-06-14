@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.boisbarganhados.ftc</groupId>
-    <artifactId>dfa_minimization</artifactId>
-    <version>1.0,0</version>
+    <artifactId>dfa_to_regex</artifactId>
+    <version>1.0.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -1,18 +1,17 @@
 ﻿
-# FTC Minimização de AFD
+# FTC - Expressão regular para AFD e simulador de AFD
 
-Um autômato finito determinístico (AFD) é denominado mínimo se não existir nenhum outro AFD
-com menos estados que reconheça a mesma linguagem. O objetivo deste trabalho é implementar um programa de obtenha um AFD mínimo para determinada linguagem.
+Um autômato finito determinístico (AFD) é denominado mínimo se não existir nenhum outro AFD com menos estados que reconheça a mesma linguagem. Toda expressão regular pode ser reduzida para um AFD e consequentemente isso define uma linguagem regular. O objetivo deste trabalho é implementar um programa que obtenha uma expressão regular qualquer e gerar seu AFD equivalente. O programa deve ser capaz de ler uma expressão regular e gerar o AFD equivalente utilizando o método de Thompson (converter expresão regular para automato não deterministico com transições lambda). O programa deve ser capaz de converter o AFN lambda para um AFD equivalente. O programa deve ser capaz de simular o AFD gerado. O programa deve ser capaz de gerar um arquivo no formato JFF (JFLAP simulator) com o AFD gerado. O programa deve ser capaz de gerar AFDs com N estados para teste.
 
 
 
 
 ## Objetivos
 
-- Minimizar AFD com dois métodos (n^2 e n log n)
-- Ler e escrever o formato JFF (JFLAP simulator)
-- Gerar AFDs com N estados para teste
-- Medir o tempo de execução e performance dos algoritmos
+- Converter uma expressão regular para um AFD equivalente.
+- Converter um AFN lambda para um AFD equivalente.
+- Simular o AFD gerado.
+- Gerar um arquivo no formato JFF (JFLAP simulator) com o AFD gerado.
 
 
 ## Requisitos
@@ -20,15 +19,14 @@ com menos estados que reconheça a mesma linguagem. O objetivo deste trabalho é
 - JDK 17 ou Java SE 17 instalado na máquina. [Baixar JDK 17](https://www.oracle.com/br/java/technologies/downloads/#jdk17-windows)
 
 
-
 ## Execução
 
-Para executar a aplicação apenas clique no executável *dfa-minimization.bat*
+Para executar a aplicação apenas clique no executável *regex-to-dfa.bat*
 ou execute manualmente em um terminal
 
 ```bash
   # Na pasta Root do programa
-  java -jar afd-minimization.jar
+  java -jar regex-to-dfa.jar
 ```
 
 Para compilar o código e buildar a aplicação execute o seguinte em um terminal
@@ -42,12 +40,12 @@ Para compilar o código e buildar a aplicação execute o seguinte em um termina
 ``` 
 ## Artigos
 
-- [Norbert Blum. 1996. An O(n log n) implementation of the standard method for minimizing n-state finite automata. Information Processing Letters 57, 2 (Jan. 29, 1996), 65–69](https://doi.org/10.1016/0020-0190(95)00199-9)
-- [Hopcroft, John. An n log n algorithm for minimizing states in a finite automaton.Theory of machines and computations (Proc. Internat. Sympos., Technion, Haifa, 1971), New York: Academic Press, pp. 189–196, 1971.](http://i.stanford.edu/pub/cstr/reports/cs/tr/71/190/CS-TR-71-190.pdf)
+
 
 
 ## Autores
 
 - [Edmar](https://www.github.com/Lexizz7)
 - [Leon](https://www.github.com/leon-junio)
+- [Felipe](https://github.com/felagmoura)
 
