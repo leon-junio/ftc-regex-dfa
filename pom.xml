@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.boisbarganhados.ftc</groupId>
-    <artifactId>dfa_to_regex</artifactId>
+    <artifactId>regex_to_dfa</artifactId>
     <version>1.0.0</version>
 
     <properties>
