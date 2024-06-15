@@ -4,7 +4,30 @@
 Um autômato finito determinístico (AFD) é denominado mínimo se não existir nenhum outro AFD com menos estados que reconheça a mesma linguagem. Toda expressão regular pode ser reduzida para um AFD e consequentemente isso define uma linguagem regular. O objetivo deste trabalho é implementar um programa que obtenha uma expressão regular qualquer e gerar seu AFD equivalente. O programa deve ser capaz de ler uma expressão regular e gerar o AFD equivalente utilizando o método de Thompson (converter expresão regular para automato não deterministico com transições lambda). O programa deve ser capaz de converter o AFN lambda para um AFD equivalente. O programa deve ser capaz de simular o AFD gerado. O programa deve ser capaz de gerar um arquivo no formato JFF (JFLAP simulator) com o AFD gerado. O programa deve ser capaz de gerar AFDs com N estados para teste.
 
 
+## Formato de entrada
 
+O formato de entrada segue o mesmo padrão do JFLAP para expressões regulares. O arquivo de entrada deve conter a expressão regular na primeira linha unicamente. O arquivo de sentenças de teste deve conter uma sentença por linha. Exemplo de arquivo de entrada:
+
+```
+a(b+c)*
+```
+
+```
+a+b*
+```
+
+```
+1*(0+1)*
+```
+
+Exemplo de arquivo de sentenças de teste:
+
+```
+a
+ab
+abc
+abcc
+```
 
 ## Objetivos
 
@@ -27,6 +50,14 @@ ou execute manualmente em um terminal
 ```bash
   # Na pasta Root do programa
   java -jar regex_to_dfa.jar
+```
+
+Passando arquivo com REGEX e sentenças de teste para o programa
+
+```bash
+  # Na pasta Root do programa
+java -jar regex_to_dfa.jar <caminho_do_arquivo_com_regex> <caminho_do_arquivo_de_sentenças>
+
 ```
 
 Para compilar o código e buildar a aplicação execute o seguinte em um terminal
