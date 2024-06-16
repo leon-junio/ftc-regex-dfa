@@ -73,7 +73,7 @@ Para compilar o código e buildar a aplicação execute o seguinte em um termina
 
 "Thompson's construction method is a fundamental technique for converting regular expressions into deterministic finite automata (DFA), enabling efficient pattern matching and lexical analysis. The method involves systematically constructing a nondeterministic finite automaton (NFA) from a regular expression and then converting it into a DFA using the subset construction algorithm (Aho, Sethi, & Ullman, 1986)."
 
-DOI: [10.1016/j.jcss.2005.12.007](https://doi.org/10.1016/j.jcss.2005.12.007)
+DOI: [10.1016/j.jcss.2005.12.007](https://doi.org/10.1145/363347.363387)
 
 ## Autores
 
